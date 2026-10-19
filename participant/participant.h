@@ -1,0 +1,1 @@
+// Participant class header
