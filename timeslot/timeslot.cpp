@@ -53,6 +53,11 @@ bool TimeSlot::isValidTime() const
 
 bool TimeSlot::isOverlapping(const TimeSlot& other) const
 {
+    if (!isValidDate() || !isValidTime() ||
+        !other.isValidDate() || !other.isValidTime())
+    {
+        return false;
+    }
     if (day != other.day || month != other.month ||
         year != other.year)
         return false;
