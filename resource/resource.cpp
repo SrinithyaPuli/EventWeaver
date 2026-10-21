@@ -1,4 +1,5 @@
-#include "Resource.h"
+#include "resource.h"
+#include <cmath>
 
 Resource::Resource()
 {
@@ -10,7 +11,11 @@ Resource::Resource()
 
 Resource::Resource(int id, string n, double rate, int stock)
 {
-    if (id > 0 && !n.empty() && rate >= 0 && stock >= 0)
+    if (id > 0 &&
+        n.find_first_not_of(" \t\n\r") != string::npos &&
+        std::isfinite(rate) &&
+        rate >= 0 &&
+        stock >= 0)
     {
         resourceId = id;
         name = n;
@@ -31,6 +36,17 @@ bool Resource::checkAvailability(int quantity) const
     return resourceId > 0 &&
            quantity > 0 &&
            quantity <= totalStock;
+}
+
+// Overloaded version: some units are already in use,
+// so only (totalStock - alreadyInUse) units are free.
+bool Resource::checkAvailability(int quantity, int alreadyInUse) const
+{
+    return resourceId > 0 &&
+           quantity > 0 &&
+           alreadyInUse >= 0 &&
+           alreadyInUse <= totalStock &&
+           quantity <= totalStock - alreadyInUse;
 }
 
 int Resource::getResourceId() const

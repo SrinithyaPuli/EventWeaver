@@ -18,7 +18,11 @@ public:
     Resource();
     Resource(int id, string n, double rate, int stock);
 
+    // checks a quantity against the full stock
     bool checkAvailability(int quantity) const;
+
+    // overloaded: checks a quantity when some units are already in use
+    bool checkAvailability(int quantity, int alreadyInUse) const;
 
     int getResourceId() const;
     string getName() const;
