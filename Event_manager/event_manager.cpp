@@ -1144,6 +1144,7 @@ void EventManager::runMenu()
                 createEvent();
                 break;
             case 2:
+                cout<<"\nDEBUG:Case 2.\n";
                 viewEvents();
                 break;
             case 3:

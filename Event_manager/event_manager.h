@@ -4,7 +4,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "../Event/event.h"
+#include "../event/event.h"
 
 using namespace std;
 

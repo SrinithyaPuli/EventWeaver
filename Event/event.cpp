@@ -1,4 +1,4 @@
-#include "Event.h"
+#include "event.h"
 #include <cmath>
 
 // A tiny tolerance so that money values like 0.1 + 0.2 are not
